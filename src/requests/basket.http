@@ -1,0 +1,29 @@
+﻿### get basket by username
+GET {{basket-api}}/Basket/swn
+
+### create basket
+POST {{basket-api}}/Basket HTTP/1.1
+Content-Type: application/json
+
+{
+  "UserName": "swn",
+  "Items": [
+    {
+      "Quantity": 2,
+      "Color": "Red",
+      "Price": 500,
+      "ProductId": "60210c2a1556459e153f0554",
+      "ProductName": "IPhone X"
+    },
+    {
+      "Quantity": 1,
+      "Color": "Blue",
+      "Price": 500,
+      "ProductId": "60210c2a1556459e153f0555",
+      "ProductName": "Samsung 10"
+    }
+  ]
+}
+
+### delete basket by username
+DELETE {{basket-api}}/Basket/swn

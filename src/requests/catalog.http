@@ -1,0 +1,42 @@
+﻿### get list of all Products
+GET {{catalog-api}}/Catalog
+
+### get product by id
+GET {{catalog-api}}/Catalog/602d2149e773f2a3990b47f5
+
+### get product by category name
+GET {{catalog-api}}/Catalog/GetProductByCategory/Smart Phone
+
+### add product
+POST {{catalog-api}}/Catalog/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": "6090b7eb2c6c114d7a45f8d9",
+  "name": "Asus Laptop",
+  "category": "Computers",
+  "summary": "Summary",
+  "description": "Description",
+  "imageFile": "ImageFile",
+  "price": 54.93
+}
+
+### update product
+PUT {{catalog-api}}/Catalog/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": "6090b7eb2c6c114d7a45f8d9",
+  "name": "Updated Asus Laptop",
+  "category": "Computers",
+  "summary": "Summary",
+  "description": "Description",
+  "imageFile": "ImageFile",
+  "price": 154.93
+}
+
+### get updated product by id
+GET {{catalog-api}}/Catalog/6090b7eb2c6c114d7a45f8d9
+
+### delete product by id
+DELETE {{catalog-api}}/Catalog/6090b7eb2c6c114d7a45f8d9
