@@ -1,0 +1,32 @@
+﻿### get discount by product name
+GET {{discount-api}}/Discount/Samsung 10
+
+### get discount by product name
+GET {{discount-api}}/Discount/Huawei Plus
+
+### create new discount
+POST {{discount-api}}/Discount HTTP/1.1
+Content-Type: application/json
+
+{
+  "productName": "Huawei Plus",
+  "description": "test new product",
+  "amount": 550
+}
+
+### get discount by product name
+GET {{discount-api}}/Discount/Huawei Plus
+
+### update discount
+PUT {{discount-api}}/Discount HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 3,
+  "productName": "Huawei Plus",
+  "description": "test update",
+  "amount": 200
+}
+
+### delete discount by product name
+DELETE {{discount-api}}/Discount/Huawei Plus
