@@ -14,7 +14,7 @@ public class DiscountRepository : IDiscountRepository
     }
     public async Task<Coupon> GetCoupon(string productName)
     {
-        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DiscountRepository:ConnectionString"));
+        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DatabaseSettings:ConnectionString"));
         
         var coupon = await connection.QueryFirstOrDefaultAsync<Coupon>
             ("SELECT * FROM Coupon WHERE ProductName=@ProductName", new { ProductName = productName });
@@ -27,7 +27,7 @@ public class DiscountRepository : IDiscountRepository
 
     public async Task<bool> CreateDiscount(Coupon coupon)
     {
-        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DiscountRepository:ConnectionString"));
+        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DatabaseSettings:ConnectionString"));
 
         var affected = await connection.ExecuteAsync
         ("insert into Coupon(ProductName, Description, Amount) values (@ProductName, @Description, @Amount)",
@@ -41,7 +41,7 @@ public class DiscountRepository : IDiscountRepository
 
     public async Task<bool> UpdateDiscount(Coupon coupon)
     {
-        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DiscountRepository:ConnectionString"));
+        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DatabaseSettings:ConnectionString"));
 
         var affected = await connection.ExecuteAsync(
             "update Coupon set ProductName=@ProductName,Description=@Description,Amount=@Amount where id=@Id",
@@ -59,7 +59,7 @@ public class DiscountRepository : IDiscountRepository
 
     public async Task<bool> DeleteDiscount(string productName)
     {
-        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DiscountRepository:ConnectionString"));
+        await using var connection = new NpgsqlConnection(_config.GetValue<string>("DatabaseSettings:ConnectionString"));
 
         var affected = await connection.ExecuteAsync("delete from coupon where ProductName=@ProductName",
             new { ProductName = productName });
